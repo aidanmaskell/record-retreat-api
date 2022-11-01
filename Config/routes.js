@@ -17,6 +17,8 @@ const routes = (app) => {
     app.post('/', unsupportedRoute)
     app.put('/', unsupportedRoute)
     app.delete('/', unsupportedRoute)
+    app.put('/collection', unsupportedRoute)
+    app.delete('/collection', unsupportedRoute)
 
 }
 
