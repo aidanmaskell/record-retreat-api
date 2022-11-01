@@ -7,6 +7,8 @@ const routes = (app) => {
     app.post('/collection', recordController.addRecordController)
     app.get('/collection/:id', recordController.getRecordController)
     app.delete('/collection/:id', recordController.deleteRecordController)
+    app.put('/collection/like/:id', recordController.likeRecordController)
+    app.put('/collection/dislike/:id', recordController.dislikeRecordController)
 
     //unsupported enpoints
     const unsupportedRoute = (req, res) => {

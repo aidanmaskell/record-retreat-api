@@ -35,9 +35,19 @@ const deleteRecord = async (collection, id) => {
     return await collection.updateOne(id, {$set:{deleted: 1}})
 }
 
+const likeRecord = async (collection, id) => {
+    return await collection.updateOne(id, {$set:{liked: 1}})
+}
+
+const dislikeRecord = async (collection, id) => {
+    return await collection.updateOne(id, {$set:{disliked: 1}})
+}
+
 module.exports.getAllRecords = getAllRecords
 module.exports.getCurrentRecordId = getCurrentRecordId
 module.exports.getRecordById = getRecordById
 module.exports.recordToAdd = recordToAdd
 module.exports.addRecord = addRecord
 module.exports.deleteRecord = deleteRecord
+module.exports.likeRecord = likeRecord
+module.exports.dislikeRecord = dislikeRecord

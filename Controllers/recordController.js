@@ -51,7 +51,23 @@ const deleteRecordController = async (req, res) => {
     res.json(createJsonResponse(deleted))
 }
 
+const likeRecordController = async (req, res) => {
+    const id = recordService.getCurrentRecordId(req)
+    const collection = await getCollection()
+    const liked = recordService.likeRecord(collection, id)
+    res.json(createJsonResponse(liked))
+}
+
+const dislikeRecordController = async (req, res) => {
+    const id = recordService.getCurrentRecordId(req)
+    const collection = await getCollection()
+    const disliked = recordService.dislikeRecord(collection, id)
+    res.json(createJsonResponse(disliked))
+}
+
 module.exports.homePageController = homePageController
 module.exports.addRecordController = addRecordController
 module.exports.getRecordController = getRecordController
 module.exports.deleteRecordController = deleteRecordController
+module.exports.likeRecordController = likeRecordController
+module.exports.dislikeRecordController = dislikeRecordController
