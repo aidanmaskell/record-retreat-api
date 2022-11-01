@@ -44,13 +44,14 @@ const getRecordController = async (req, res) => {
     }
 }
 
-// const deleteRecordController = async (req, res) => {
-//     const id = recordService.getCurrentRecordId(req)
-//     const collection = await getCollection()
-
-// }
+const deleteRecordController = async (req, res) => {
+    const id = recordService.getCurrentRecordId(req)
+    const collection = await getCollection()
+    const deleted = recordService.deleteRecord(collection, id)
+    res.json(createJsonResponse(deleted))
+}
 
 module.exports.homePageController = homePageController
 module.exports.addRecordController = addRecordController
 module.exports.getRecordController = getRecordController
-// module.exports.deleteRecordController = deleteRecordController
+module.exports.deleteRecordController = deleteRecordController
