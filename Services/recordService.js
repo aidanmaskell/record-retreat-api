@@ -21,7 +21,9 @@ const recordToAdd = (artist, title, year, img, songLink) => {
         year: year,
         img: img,
         songLink: songLink,
-        deleted: 0
+        deleted: 0,
+        liked: 0,
+        disliked: 0
     }
 }
 
