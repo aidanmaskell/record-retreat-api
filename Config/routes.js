@@ -5,6 +5,7 @@ const routes = (app) => {
 
     app.get('/collection', recordController.homePageController)
     app.post('/collection', recordController.addRecordController)
+    app.get('/collection/:id', recordController.getRecordController)
 
     //unsupported enpoints
     const unsupportedRoute = (req, res) => {

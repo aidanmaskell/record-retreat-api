@@ -20,13 +20,30 @@ const addRecordController = async (req, res) => {
             recordData.year, 
             recordData.img, 
             recordData.songLink)
-            const collection = await getCollection()
-            await recordService.addRecord(collection, record)
-            await res.json(createJsonResponse(recordData))
-        } else {
-            await res.json(createJsonResponse('', false, 'invalid record data', 400))
-        }
+        const collection = await getCollection()
+        await recordService.addRecord(collection, record)
+
+        await res.json(createJsonResponse(recordData))
+    } else {
+        await res.json(createJsonResponse('', false, 'invalid record data', 400))
     }
-        
+}
+
+const getRecordController = async (req, res) => {
+    const collection = await getCollection()
+    const id = recordService.getCurrentRecordId(req)
+    if (id) {
+        const record = await recordService.getRecordById(collection, id)
+        if (record) {
+            await res.json(createJsonResponse(record))
+        } else {
+            await res.json(createJsonResponse('', false, 'id not in db', 400))
+        }
+    } else {
+        await res.json(createJsonResponse('', false, 'invalid record id', 400))
+    }
+}
+
 module.exports.homePageController = homePageController
 module.exports.addRecordController = addRecordController
+module.exports.getRecordController = getRecordController
