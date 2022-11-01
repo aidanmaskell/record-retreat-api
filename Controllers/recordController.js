@@ -30,9 +30,9 @@ const addRecordController = async (req, res) => {
 }
 
 const getRecordController = async (req, res) => {
-    const collection = await getCollection()
     const id = recordService.getCurrentRecordId(req)
     if (id) {
+        const collection = await getCollection()
         const record = await recordService.getRecordById(collection, id)
         if (record) {
             await res.json(createJsonResponse(record))
@@ -44,6 +44,13 @@ const getRecordController = async (req, res) => {
     }
 }
 
+// const deleteRecordController = async (req, res) => {
+//     const id = recordService.getCurrentRecordId(req)
+//     const collection = await getCollection()
+
+// }
+
 module.exports.homePageController = homePageController
 module.exports.addRecordController = addRecordController
 module.exports.getRecordController = getRecordController
+// module.exports.deleteRecordController = deleteRecordController

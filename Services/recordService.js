@@ -31,8 +31,13 @@ const addRecord = async (collection, recordToAdd) => {
     return await collection.insertOne(recordToAdd)
 } 
 
+const deleteRecord = async (collection, id) => {
+    return await collection.updateOne(id, {$set:{deleted: 1}})
+}
+
 module.exports.getAllRecords = getAllRecords
 module.exports.getCurrentRecordId = getCurrentRecordId
 module.exports.getRecordById = getRecordById
 module.exports.recordToAdd = recordToAdd
 module.exports.addRecord = addRecord
+module.exports.deleteRecord = deleteRecord
