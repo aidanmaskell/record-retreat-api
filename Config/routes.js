@@ -21,6 +21,12 @@ const routes = (app) => {
     app.delete('/', unsupportedRoute)
     app.put('/collection', unsupportedRoute)
     app.delete('/collection', unsupportedRoute)
+    app.get('/collection/like/:id', unsupportedRoute)
+    app.post('/collection/like/:id', unsupportedRoute)
+    app.delete('/collection/like/:id', unsupportedRoute)
+    app.get('/collection/dislike/:id', unsupportedRoute)
+    app.post('/collection/dislike/:id', unsupportedRoute)
+    app.delete('/collection/dislike/:id', unsupportedRoute)
 
 }
 
