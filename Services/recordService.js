@@ -10,7 +10,8 @@ const recordToAdd = (artist, title, year, img, songLink) => {
         title: title, 
         year: year,
         img: img,
-        songLink: songLink
+        songLink: songLink,
+        deleted: 0
     }
 }
 

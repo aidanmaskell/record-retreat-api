@@ -24,7 +24,7 @@ const validateNum = (num) => {
 }
 
 const validateUrl = (url) => {
-    const reg = new RegExp('[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)')
+    const reg = new RegExp('(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})')
     if (url) {
         if (reg.test(url)) {
             return true
@@ -39,7 +39,8 @@ const validateUrl = (url) => {
 const validateRecord = (record) => {
     if (validateName(record.artist) 
         && validateName(record.title)
-        && validateNum(record.year)) {
+        && validateNum(record.year)
+        && validateUrl(record.songLink)) {
             return true
         } else {
             return false
