@@ -12,9 +12,7 @@ const homePageController = (req, res) => {
 
 const addRecordController = async (req, res) => {
     const recordData = await req.body
-    if (validationService.validateName(recordData.artist)
-        && validationService.validateName(recordData.title)
-        && validationService.validateNum(recordData.year)) {
+    if (validationService.validateRecord(recordData)) {
         const record = await recordService
         .recordToAdd(
             recordData.artist, 
