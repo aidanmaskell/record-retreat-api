@@ -45,21 +45,21 @@ const getRecordController = async (req, res) => {
 }
 
 const deleteRecordController = async (req, res) => {
-    const id = recordService.getCurrentRecordId(req)
+    const id = await recordService.getCurrentRecordId(req)
     const collection = await getCollection()
     const deleted = await recordService.deleteRecord(collection, id)
     res.json(createJsonResponse(deleted))
 }
 
 const likeRecordController = async (req, res) => {
-    const id = recordService.getCurrentRecordId(req)
+    const id = await recordService.getCurrentRecordId(req)
     const collection = await getCollection()
     const liked = await recordService.likeRecord(collection, id)
     res.json(createJsonResponse(liked))
 }
 
 const dislikeRecordController = async (req, res) => {
-    const id = recordService.getCurrentRecordId(req)
+    const id = await recordService.getCurrentRecordId(req)
     const collection = await getCollection()
     const disliked = await recordService.dislikeRecord(collection, id)
     res.json(createJsonResponse(disliked))

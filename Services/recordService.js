@@ -21,9 +21,9 @@ const recordToAdd = (artist, title, year, img, songLink) => {
         year: year,
         img: img,
         songLink: songLink,
-        deleted: 0,
-        liked: 0,
-        disliked: 0
+        deleted: false,
+        liked: false,
+        disliked: false
     }
 }
 
@@ -32,15 +32,29 @@ const addRecord = async (collection, recordToAdd) => {
 } 
 
 const deleteRecord = async (collection, id) => {
-    return await collection.updateOne(id, {$set:{deleted: 1}})
+    return await collection.updateOne(id, {$set:{deleted: true}})
 }
 
 const likeRecord = async (collection, id) => {
-    return await collection.updateOne(id, {$set:{liked: 1}})
+    const record = await collection.find(id).toArray()
+    if (record[0].liked === false) {
+        await collection.updateOne(id, {$set:{liked: true, disliked: false}})
+        return await collection.find(id).toArray()
+    } else {
+        await collection.updateOne(id, {$set:{liked: false}})
+        return await collection.find(id).toArray()
+    }
 }
 
 const dislikeRecord = async (collection, id) => {
-    return await collection.updateOne(id, {$set:{disliked: 1}})
+    const record = await collection.find(id).toArray()
+    if (record[0].disliked === false) {
+        await collection.updateOne(id, {$set:{disliked: true, liked: false}})
+        return await collection.find(id).toArray()
+    } else {
+        await collection.updateOne(id, {$set:{disliked: false}})
+        return await collection.find(id).toArray()
+    }
 }
 
 module.exports.getAllRecords = getAllRecords
