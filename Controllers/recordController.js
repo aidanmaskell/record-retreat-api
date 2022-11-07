@@ -3,10 +3,10 @@ const createJsonResponse = require('../Services/jsonResponseService')
 const recordService = require('../Services/recordService')
 const validationService = require ('../Services/validationService')
 
-const homePageController = (req, res) => {
-    const collection = getCollection()
-    const records = recordService.getAllRecords(collection)
-
+const homePageController = async (req, res) => {
+    const collection = await getCollection()
+    const records = await recordService.getAllRecords(collection)
+    
     res.json(createJsonResponse(records)) 
 }
 
