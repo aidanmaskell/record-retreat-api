@@ -40,8 +40,7 @@ const validateRecord = (record) => {
     if (validateName(record.artist) 
         && validateName(record.title)
         && validateNum(record.year)
-        && validateUrl(record.songLink)
-        && validateUrl(record.img)) {
+        && validateUrl(record.songLink)) {
             return true
         } else {
             return false

@@ -14,12 +14,11 @@ const getRecordById = async (collection, id) => {
     return await collection.find(id).toArray()
 }
 
-const recordToAdd = (artist, title, year, img, songLink) => {
+const recordToAdd = (artist, title, year, songLink) => {
     return {
         artist: artist,
         title: title, 
         year: year,
-        img: img,
         songLink: songLink,
         deleted: false,
         liked: false,
